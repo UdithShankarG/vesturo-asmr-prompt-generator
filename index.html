@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vesturo ASMR — Self-Deploying Toy Prompt Generator</title>
+  <meta name="description" content="Generate ultra-detailed AI video prompts for self-deploying metallic mechanical toy transformations — perfect for ASMR YouTube Shorts content.">
+  <link rel="stylesheet" href="index.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚙️</text></svg>">
+</head>
+<body>
+
+<!-- Background effects -->
+<div class="bg-grid"></div>
+<div class="bg-glow bg-glow-1"></div>
+<div class="bg-glow bg-glow-2"></div>
+
+<div class="app-container">
+
+  <!-- ═══ HEADER ═══ -->
+  <header class="app-header">
+    <div class="app-logo">
+      <div class="logo-icon">⚙️</div>
+      <span class="logo-text">Vesturo ASMR</span>
+    </div>
+    <p class="app-subtitle">
+      Self-Deploying Metallic Toy Prompt Generator for <span>AI Video Models</span>
+    </p>
+  </header>
+
+  <!-- ═══ STEPPER ═══ -->
+  <nav class="stepper" id="stepper">
+    <div class="step-item active" data-step="1" onclick="goToStep(1)">
+      <div class="step-number">1</div>
+      <span class="step-label">Category & Subject</span>
+    </div>
+    <div class="step-connector"></div>
+    <div class="step-item" data-step="2" onclick="goToStep(2)">
+      <div class="step-number">2</div>
+      <span class="step-label">Theme & Colors</span>
+    </div>
+    <div class="step-connector"></div>
+    <div class="step-item" data-step="3" onclick="goToStep(3)">
+      <div class="step-number">3</div>
+      <span class="step-label">Transformation</span>
+    </div>
+    <div class="step-connector"></div>
+    <div class="step-item" data-step="4" onclick="goToStep(4)">
+      <div class="step-number">4</div>
+      <span class="step-label">Preview & Generate</span>
+    </div>
+  </nav>
+
+  <!-- ════════════════════════════════════════
+       STEP 1: CATEGORY & SUBJECT
+       ════════════════════════════════════════ -->
+  <section class="section active" id="step1">
+    <h1 class="section-title"><span class="icon">📂</span> Choose Category & Subject</h1>
+    <p class="section-desc">Select a category for your self-deploying toy, then choose or type a specific subject name.</p>
+
+    <div class="card mb-lg">
+      <div class="card-header">
+        <span class="card-title">🏷️ Category</span>
+        <span class="tag tag-accent" id="selectedCatTag">None selected</span>
+      </div>
+      <div class="category-grid" id="categoryGrid">
+        <!-- Populated by JS -->
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="form-group">
+        <label class="form-label">📝 Or enter a custom category</label>
+        <input type="text" class="form-input" id="customCategory" placeholder="e.g. Underwater Vehicles, Mythical Beasts, Medical Devices...">
+        <span class="form-hint">If your category isn't listed above, type it here. This will override the grid selection.</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">🎯 Subject Name</span>
+      </div>
+
+      <div class="info-box">
+        <span class="icon">💡</span>
+        <span>Select a suggested subject below, or type any subject name you want. The toy will be a hyper-detailed metallic mechanical sculpture of whatever you enter — even living creatures will be rendered as lifeless metal.</span>
+      </div>
+
+      <div class="subject-suggestions" id="subjectSuggestions">
+        <!-- Populated by JS when category is selected -->
+        <span class="subject-pill" style="opacity:0.5">Select a category first...</span>
+      </div>
+
+      <div class="form-group mt-lg">
+        <label class="form-label">✏️ Subject Name (type or select above)</label>
+        <input type="text" class="form-input" id="subjectInput" placeholder="e.g. Lamborghini Aventador, Tyrannosaurus Rex, Katana...">
+        <span class="form-hint">The self-deploying toy will transform into this subject. Be specific for better prompts.</span>
+      </div>
+    </div>
+
+    <div class="btn-group" style="justify-content: flex-end;">
+      <button class="btn btn-primary btn-lg" onclick="nextStep(2)">Next: Theme & Colors →</button>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       STEP 2: THEME & COLORS
+       ════════════════════════════════════════ -->
+  <section class="section" id="step2">
+    <h1 class="section-title"><span class="icon">🎨</span> Theme & Color Finish</h1>
+    <p class="section-desc">Choose the metallic finish and color theme applied to the entire toy surface.</p>
+
+    <div class="card mb-lg">
+      <div class="card-header">
+        <span class="card-title">✨ Metallic Finish Presets</span>
+      </div>
+
+      <div class="theme-grid" id="themeGrid">
+        <!-- Populated by JS -->
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="form-group">
+        <label class="form-label">🎨 Or enter a custom color / theme description</label>
+        <input type="text" class="form-input" id="customThemeInput" placeholder="e.g. candy apple red metallic, holographic purple, anodized teal, matte olive drab...">
+        <span class="form-hint">Describe any custom metallic color or finish you want. This overrides the preset selection. The abstract and subject will both have this finish.</span>
+      </div>
+    </div>
+
+    <div class="btn-group" style="justify-content: space-between;">
+      <button class="btn btn-secondary" onclick="goToStep(1)">← Back</button>
+      <button class="btn btn-primary btn-lg" onclick="nextStep(3)">Next: Transformation →</button>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       STEP 3: TRANSFORMATION CONFIG
+       ════════════════════════════════════════ -->
+  <section class="section" id="step3">
+    <h1 class="section-title"><span class="icon">⚙️</span> Transformation Configuration</h1>
+    <p class="section-desc">Configure how the abstract deploys into the subject — style, speed, duration, and number of parts.</p>
+
+    <div class="card mb-lg">
+      <div class="card-header">
+        <span class="card-title">🔩 Deployment Style</span>
+        <span class="tag tag-accent" id="selectedDeployTag">None selected</span>
+      </div>
+
+      <div class="info-box">
+        <span class="icon">👁️</span>
+        <span>Hover over each style to preview the animation pattern. Click to select.</span>
+      </div>
+
+      <div class="deploy-grid" id="deployGrid">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+
+    <div class="card mb-lg">
+      <div class="card-header">
+        <span class="card-title">⏱️ Timing & Parts</span>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Transformation Duration</label>
+          <input type="range" class="range-slider" id="durationSlider" min="2" max="6" value="4" step="0.5" oninput="updateDurationLabel()">
+          <div class="range-value" id="durationLabel">⏱️ 4.0 seconds</div>
+          <span class="form-hint">How long the deployment animation takes (not counting hand interaction). Total video is always 10 seconds.</span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Number of Major Parts</label>
+          <input type="range" class="range-slider" id="partsSlider" min="3" max="10" value="6" step="1" oninput="updatePartsLabel()">
+          <div class="range-value" id="partsLabel">🔩 6 parts</div>
+          <span class="form-hint">More parts = more detailed transformation but faster individual movements.</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Transformation Speed Feel</label>
+        <select class="form-select" id="speedSelect">
+          <option value="smooth">🎯 Smooth & Steady — Consistent deliberate pace</option>
+          <option value="slow">🐢 Slow & Meditative — Lingering, ASMR-focused</option>
+          <option value="fast">⚡ Quick & Snappy — Brisk, energetic, decisive</option>
+          <option value="variable">🌊 Variable / Accelerating — Starts slow, builds momentum</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="btn-group" style="justify-content: space-between;">
+      <button class="btn btn-secondary" onclick="goToStep(2)">← Back</button>
+      <button class="btn btn-primary btn-lg" onclick="nextStep(4)">Next: Preview & Generate →</button>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       STEP 4: PREVIEW & GENERATE
+       ════════════════════════════════════════ -->
+  <section class="section" id="step4">
+    <h1 class="section-title"><span class="icon">🚀</span> Preview & Generate Prompts</h1>
+    <p class="section-desc">Review your configuration, preview the transformation concept, and generate your prompts.</p>
+
+    <!-- Summary -->
+    <div class="summary-grid" id="summaryGrid">
+      <!-- Populated by JS -->
+    </div>
+
+    <!-- Transformation Preview -->
+    <div class="card mb-lg">
+      <div class="card-header">
+        <span class="card-title">👁️ Transformation Concept Preview</span>
+        <button class="btn btn-secondary" onclick="playPreview()" id="previewPlayBtn">▶ Play Preview</button>
+      </div>
+
+      <div class="preview-container">
+        <div class="preview-header">
+          <span class="preview-title">📱 Simulated Phone Camera View</span>
+          <span class="preview-time" id="previewTimer">0:00 / 0:10</span>
+        </div>
+        <div class="preview-stage" id="previewStage">
+          <div class="desk-surface"></div>
+          <div class="preview-object" id="previewObject">
+            <div class="preview-abstract" id="previewAbstract">
+              <span class="emoji" id="previewEmoji">⚙️</span>
+            </div>
+          </div>
+          <!-- Hand element -->
+          <div id="previewHand" style="position:absolute; font-size:48px; left:-60px; bottom:40%; transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1); z-index:10; opacity:0;">🤚</div>
+        </div>
+        <div class="preview-controls">
+          <button class="btn btn-icon btn-secondary" onclick="playPreview()" id="previewPlayBtn2">▶</button>
+          <div class="preview-timeline">
+            <div class="preview-timeline-fill" id="previewTimelineFill"></div>
+          </div>
+          <span class="preview-time" id="previewTimerBottom">0:00</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI Problem Prevention Tips -->
+    <div class="warning-box">
+      <h4>⚠️ Known AI Video Generation Problems (Auto-Prevented in Prompts)</h4>
+      <ul>
+        <li>Object morphing instead of mechanical unfolding — prompt enforces rigid mechanical movements only</li>
+        <li>Text/numbers appearing on screen — prompt explicitly forbids any on-screen text or measurements</li>
+        <li>Object sliding or drifting on surface — prompt locks base position throughout video</li>
+        <li>Lighting/shadow inconsistency — prompt demands fixed, consistent lighting</li>
+        <li>Hand continuity errors — prompt specifies consistent hand appearance</li>
+        <li>Part count changing between frames — prompt enforces conservation of parts</li>
+        <li>Camera teleportation or zoom — prompt locks single handheld perspective</li>
+        <li>Material/color shifting — prompt demands consistent metallic finish throughout</li>
+        <li>Unnatural physics (floating parts) — prompt demands true physics simulation</li>
+        <li>Sound without visual cause — prompt syncs every sound to a visible action</li>
+      </ul>
+    </div>
+
+    <!-- Generate Button -->
+    <div class="text-center mb-lg">
+      <button class="btn btn-success btn-lg" onclick="generatePrompts()" id="generateBtn">
+        ⚡ Generate Master & Video Prompts
+      </button>
+    </div>
+
+    <!-- Prompt Outputs -->
+    <div class="prompt-output" id="promptOutput" style="display:none;">
+
+      <!-- Master Prompt -->
+      <div class="prompt-block">
+        <div class="prompt-block-header">
+          <span class="prompt-block-title">
+            🧠 Master Training Prompt
+            <span class="badge badge-master">MASTER</span>
+          </span>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <span class="copy-feedback" id="masterCopyFeedback">✅ Copied!</span>
+            <button class="btn btn-copy" onclick="copyPrompt('master')">📋 Copy Entire Prompt</button>
+          </div>
+        </div>
+        <div class="prompt-content" id="masterPromptContent">
+          <!-- Generated content -->
+        </div>
+      </div>
+
+      <!-- Video Prompt -->
+      <div class="prompt-block">
+        <div class="prompt-block-header">
+          <span class="prompt-block-title">
+            🎬 Video Model Prompt
+            <span class="badge badge-video">VIDEO</span>
+          </span>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <span class="copy-feedback" id="videoCopyFeedback">✅ Copied!</span>
+            <button class="btn btn-copy" onclick="copyPrompt('video')">📋 Copy Entire Prompt</button>
+          </div>
+        </div>
+        <div class="prompt-content" id="videoPromptContent">
+          <!-- Generated content -->
+        </div>
+      </div>
+
+    </div>
+
+    <div class="btn-group" style="justify-content: flex-start;">
+      <button class="btn btn-secondary" onclick="goToStep(3)">← Back to Configuration</button>
+    </div>
+  </section>
+
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast">
+  <span class="icon">✅</span>
+  <span id="toastMsg">Copied to clipboard!</span>
+</div>
+
+<!-- Scripts -->
+<script src="prompts.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
